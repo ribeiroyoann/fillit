@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 19:17:19 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/19 12:40:44 by yoribeir         ###   ########.fr       */
+/*   Created: 2018/11/19 12:13:07 by yoribeir          #+#    #+#             */
+/*   Updated: 2018/11/19 12:34:06 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		parser(int fd)
+int main(int argc, char **argv)
 {
-	char	*line;
-	char	**split;
+	int		fd;
 
-	while (get_next_line(fd, &line) == 1)
-	{
-		split = ft_strsplit(line, '\n');
-		printf("%s\n", *split);
-	}
-	return (1);
+	fd = open(argv[1], O_RDONLY);
+	parser(fd);
+	return 0;
 }
