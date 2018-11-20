@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 12:13:07 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/19 12:34:06 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/20 13:51:59 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int main(int argc, char **argv)
 {
-	int		fd;
 
-	fd = open(argv[1], O_RDONLY);
-	parser(fd);
+	parser(argv);
 	return 0;
 }

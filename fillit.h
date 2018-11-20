@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 19:17:29 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/19 12:34:26 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/20 10:48:48 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ typedef struct		s_tetri
 	struct s_tetri	*next;
 }					t_tetri;
 
-int		parser(int fd);
+int		parser(char **argv);
 
 #endif
