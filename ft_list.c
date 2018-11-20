@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:08:56 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/20 18:16:44 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/20 19:31:48 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,15 @@
 
 void		ft_list_push_back(t_tetri **list, t_tetri *new)
 {
-	t_tetri		*tmp;
-
 	if (!*list)
 		*list = new;
 	else
 	{
-		tmp = *list;
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = new;
+		while ((*list)->next)
+			(*list) = (*list)->next;
+		(*list)->next = new;
 	}
 }
-
 
 t_tetri		*ft_list_new(void)
 {
@@ -46,7 +42,6 @@ int			ft_list_size(t_tetri *head)
 	int			count;
 	t_tetri		*tmp;
 
-
 	tmp = head;
 	count = 0;
 	while (tmp)
@@ -55,4 +50,15 @@ int			ft_list_size(t_tetri *head)
 		tmp = tmp->next;
 	}
 	return (count);
+}
+
+void	ft_lst_add(t_tetri **alst, t_tetri *new)
+{
+	if (!*alst)
+		*alst = new;
+	else
+	{
+		new->next = *alst;
+		*alst = new;
+	}
 }

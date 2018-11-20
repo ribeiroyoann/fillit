@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 19:17:19 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/20 18:19:33 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/20 19:33:40 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@ int		parser(char **argv)
 	while (get_next_line(fd, &line) == 1 && i < 5)
 	{
 		if (!i)
-			ft_list_push_back(&list, ft_list_new());
-		if (!(i % 4))
-			(list->shape)[i] = ft_strdup(line);
+			list = ft_list_new();
+		list->shape[i] = ft_strdup(line);
+		printf("[%s]\n", list->shape[i]);
 		i++;
 		if (i == 4)
 		{
-			list->shape[i] = 0;
-			list = list->next;
+			ft_list_push_back(&list, list);
 			i = 0;
 		}
 	}
