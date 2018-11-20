@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 19:17:19 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/20 14:48:06 by oumaysou         ###   ########.fr       */
+/*   Updated: 2018/11/20 18:19:33 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,15 @@ int		parser(char **argv)
 
 	fd = open(argv[1], O_RDONLY);
 	i = 0;
-	while (get_next_line(fd, &line) == 1 && i < 4)
+	while (get_next_line(fd, &line) == 1 && i < 5)
 	{
 		if (!i)
-			if ((list->shape = (char **)malloc(sizeof(char *) * 5)) == NULL)
-				return (0);
+			ft_list_push_back(&list, ft_list_new());
 		if (!(i % 4))
 			(list->shape)[i] = ft_strdup(line);
 		i++;
 		if (i == 4)
-		{	
+		{
 			list->shape[i] = 0;
 			list = list->next;
 			i = 0;

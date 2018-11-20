@@ -1,12 +1,12 @@
-* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 19:17:29 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/20 14:19:49 by oumaysou         ###   ########.fr       */
+/*   Created: 2018/11/20 15:09:34 by yoribeir          #+#    #+#             */
+/*   Updated: 2018/11/20 18:17:09 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,12 @@ typedef struct		s_tetri
 {
 	char			**shape;
 	struct s_tetri	*next;
+	struct s_tetri	*prev;
 }					t_tetri;
 
-int		parser(char **argv);
+int			parser(char **argv);
+t_tetri		*ft_list_new(void);
+int			ft_list_size(t_tetri *head);
+void		ft_list_push_back(t_tetri **list, t_tetri *new);
 
 #endif
