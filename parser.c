@@ -6,28 +6,11 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 19:17:19 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/20 11:26:34 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/20 13:53:34 by oumaysou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-int		check_tetrimino(char *buffer)
-{
-	int		i;
-
-	i = 0;
-	while (i < 4 && buffer[i])
-	{
-		if (buffer[i] != '.' || buffer[i] != '#')
-		{
-			printf("[%c]\n", buffer[i]);
-			return (-1);
-		}
-		i++;
-	}
-	return (1);
-}
 
 int		parser(char **argv)
 {
