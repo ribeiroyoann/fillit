@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:09:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/21 13:17:45 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/21 18:44:09 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void		ft_list_push_back(t_tetri **list, char **tetri);
 char	*get_line(int fd);
 char		**get_tetri(int fd);
 
-
+void	test_print(char **tetri);
+void	print_list(t_list *lst);
 #endif

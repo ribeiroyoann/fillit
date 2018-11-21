@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 19:17:19 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/21 13:17:46 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/21 18:45:47 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,40 @@
 
 int		parser(int fd)
 {
-	char **tetri;
-	int y = 0;
+	char 	**tetri;
+	t_list	*list;
+	t_list	*node;
+	int i;
 
-	tetri = get_tetri(fd);
-	while (tetri[y])
+	list = NULL;
+
+	i = -1;
+	while (((tetri = get_tetri(fd)) != NULL))
 	{
-		printf("%s\n", tetri[y]);
-		y++;
+		node = ft_lstnew(tetri, 32);
+		ft_lstpushback(&list, node);
 	}
+	print_list(list);
 	return (1);
+}
+
+void	print_list(t_list *lst)
+{
+	t_list *tmp;
+	int i;
+
+	tmp = lst;
+	while (tmp)
+	{
+		i = 0;
+		while (((char **)tmp->content)[i])
+		{
+			printf("%s\n", ((char **)tmp->content)[i]);
+			i++;
+		}
+		printf("\n");
+		tmp = tmp->next;
+	}
 }
 
 char	*get_line(int fd) // returns 1 line from GNL and checks errors
@@ -59,7 +83,8 @@ char	**get_tetri(int fd)
 	{
 		stock = get_line(fd);
 		if (i < 4)
-			tetri[i] = ft_strdup(stock);
+			if (!(tetri[i] = ft_strdup(stock)))
+				return NULL;
 		i++;
 	}
 	tetri[i - 1] = 0;
@@ -67,18 +92,3 @@ char	**get_tetri(int fd)
 		return (tetri);
 	return (NULL);
 }
-
-// parser()
-// {
-// 	*line = char *read_line(fd)
-// 	{
-// 		if (check_line(*line) == 1)
-// 			return (line);
-// 	}
-// 	char **	create_shape(*line)
-// 	{
-		
-// 		char tab[i] = ft_strdup(line);
-
-// 	}
-// }

@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 18:22:33 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/09 16:04:12 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/21 18:37:31 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strdup(char const *src)
 	int		len;
 	int		i;
 
+	if (!src)
+		return (NULL);
 	len = ft_strlen(src);
 	ret = malloc(sizeof(char) * (len + 1));
 	if (!ret)
