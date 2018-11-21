@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 19:17:19 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/21 10:44:48 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/21 13:17:46 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,14 @@
 
 int		parser(int fd)
 {
-	unsigned int	i;
-	char			*line;
-	t_tetri			*list;
+	char **tetri;
+	int y = 0;
 
-	i = 0;
-	while (get_next_line(fd, &line) == 1 && i < 5)
+	tetri = get_tetri(fd);
+	while (tetri[y])
 	{
-		if (!i)
-			list = ft_list_new();
-		list->shape[i] = ft_strdup(line);
-		// printf("[%s]\n", list->shape[i]);
-		i++;
-		if (i == 4)
-		{
-			ft_list_push_back(&list, list);
-			printf("[%s]\n", list->shape[0]);
-			i = 0;
-		}
+		printf("%s\n", tetri[y]);
+		y++;
 	}
 	return (1);
 }
@@ -46,11 +36,12 @@ char	*get_line(int fd) // returns 1 line from GNL and checks errors
 	{
 		while (line[i])
 		{
-			if (line[i] != '.' || line[i] != '#' || i > 3)
+			if ((line[i] != '.' && line[i] != '#')|| i > 3)
 				return (NULL);
 			i++;
 		}
-		return (line);
+		if (i == 4 || !ft_strcmp(line, "\n"))
+			return (line);
 	}
 	return (NULL);
 }
@@ -59,15 +50,22 @@ char	**get_tetri(int fd)
 {
 	int		i;
 	char	**tetri;
+	char	*stock;
 
 	i = 0;
-	if (!(tetri = ))
-	while (i < 4)
+	if (!(tetri = malloc(sizeof(char *) * 5)))
+		return (NULL);
+	while (i < 5)
 	{
-		tetri[i] = get_line(fd);
+		stock = get_line(fd);
+		if (i < 4)
+			tetri[i] = ft_strdup(stock);
 		i++;
 	}
-
+	tetri[i - 1] = 0;
+	if (i == 5)
+		return (tetri);
+	return (NULL);
 }
 
 // parser()

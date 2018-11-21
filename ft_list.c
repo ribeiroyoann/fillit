@@ -6,23 +6,23 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:08:56 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/20 19:31:48 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/21 12:22:32 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void		ft_list_push_back(t_tetri **list, t_tetri *new)
-{
-	if (!*list)
-		*list = new;
-	else
-	{
-		while ((*list)->next)
-			(*list) = (*list)->next;
-		(*list)->next = new;
-	}
-}
+// void		ft_list_push_back(t_tetri **list, t_tetri *new)
+// {
+// 	if (!*list)
+// 		*list = new;
+// 	else
+// 	{
+// 		while ((*list)->next)
+// 			(*list) = (*list)->next;
+// 		(*list)->next = new;
+// 	}
+// }
 
 t_tetri		*ft_list_new(void)
 {
