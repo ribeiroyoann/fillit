@@ -6,30 +6,11 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 19:17:19 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/21 18:45:47 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/21 19:02:21 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-int		parser(int fd)
-{
-	char 	**tetri;
-	t_list	*list;
-	t_list	*node;
-	int i;
-
-	list = NULL;
-
-	i = -1;
-	while (((tetri = get_tetri(fd)) != NULL))
-	{
-		node = ft_lstnew(tetri, 32);
-		ft_lstpushback(&list, node);
-	}
-	print_list(list);
-	return (1);
-}
 
 void	print_list(t_list *lst)
 {
@@ -91,4 +72,31 @@ char	**get_tetri(int fd)
 	if (i == 5)
 		return (tetri);
 	return (NULL);
+}
+
+int		parser(int fd)
+{
+	char 	**tetri;
+	t_list	*list;
+	t_list	*node;
+	int i;
+
+	list = NULL;
+
+	i = -1;
+	while (((tetri = get_tetri(fd)) != NULL))
+	{
+		if (check_blocks(tetri))
+		{
+			node = ft_lstnew(tetri, 32);
+			ft_lstpushback(&list, node);
+		}
+		else
+		{
+			ft_putstr("error\n");
+			return (0);
+		}
+	}
+	print_list(list);
+	return (1);
 }
