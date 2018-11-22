@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 18:51:05 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/22 11:35:06 by oumaysou         ###   ########.fr       */
+/*   Updated: 2018/11/22 15:35:50 by oumaysou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int	check_blocks(char **tetri)
 
 int	check_around(char **tetri, int x, int y)
 {
-	if (tetri[x + 1][y] && tetri[x + 1][y] == '#')
+	if (tetri[x + 1] && tetri[x + 1][y] == '#')
 		return (1);
-	if (tetri[x - 1][y] && tetri[x - 1][y] == '#')
+	if (tetri[x - 1] && tetri[x - 1][y] == '#')
 		return (1);
 	if (tetri[x][y + 1] && tetri[x][y + 1] == '#')
 		return (1);
@@ -55,9 +55,9 @@ int	check_shape(char **tetri)
 	int y;
 
 	x = 0;
-	y = 0;
 	while (tetri[x])
 	{
+		y = 0;
 		while (tetri[x][y])
 		{
 			if (tetri[x][y] == '.' || (tetri[x][y] == '#' &&
@@ -66,7 +66,10 @@ int	check_shape(char **tetri)
 			else
 				return(0);
 		}
-		x++;
+		if (y == 4)
+			x++;
+		else
+			return (0);
 	}
 	return (1);	
 }

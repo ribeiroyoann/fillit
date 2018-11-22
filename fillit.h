@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:09:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/21 18:53:59 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/22 16:11:59 by oumaysou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,15 @@ typedef struct		s_tetri
 	struct s_tetri	*prev;
 }					t_tetri;
 
-int			parser(int fd);
-t_tetri		*ft_list_new(void);
-int			ft_list_size(t_tetri *head);
-void		ft_list_push_back(t_tetri **list, char **tetri);
+int					parser(int fd);
+t_tetri				*ft_list_new(void);
+int					ft_list_size(t_tetri *head);
+void				ft_list_push_back(t_tetri **list, char **tetri);
 
-char	*get_line(int fd);
-char		**get_tetri(int fd);
-
-void	test_print(char **tetri);
-void	print_list(t_list *lst);
-int		check_blocks(char **tetri);
-
+char				*get_line(int fd);
+char				**get_tetri(int fd);
+void				test_print(char **tetri);
+void				print_list(t_list *lst);
+int					check_blocks(char **tetri);
+int					check_shape(char **tetri);
 #endif
