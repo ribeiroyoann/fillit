@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:09:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/23 13:16:49 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/23 16:13:50 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ void	print_board(char **board);
 int		place_piece(char **tetri, char **board, int x, int y);
 int		valid_piece(char **tetri, char **board, int x, int y, int c);
 int		align_piece(char **tetri);
+int		align_piece2(char **tetri);
+int		align_piece3(char **tetri);
+int		solve(t_list *list, char **board);
 
 
 #endif

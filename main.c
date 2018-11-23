@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 12:13:07 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/23 13:19:52 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/23 16:30:22 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,12 @@ int		main(int argc, char **argv)
 
 	fd = open(argv[1], O_RDONLY);
 	tetri = parser(fd);
-	print_list(tetri);
-
-	printf("-----\n\n");
+	// print_list(tetri);
+	// printf("-----\n\n");
 
 	board = init_board(tetri);
-	while (tetri->next)
-	{
-		printf("%d\n", align_piece(tetri->content));
-		if (place_piece(tetri->content, board, 0, 0))
-			valid_piece(tetri->content, board, 0, 0, 'A');
-		tetri = tetri->next;
-	}
+	solve(tetri, board);
+
 	print_board(board);
 	return 0;
 }

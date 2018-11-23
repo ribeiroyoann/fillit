@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 12:36:49 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/23 12:37:28 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/23 15:11:30 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	print_board(char **board)
 {
 	int i = 0;
 
+	printf("\n");
 	while (board[i])
 	{
 		printf("%s\n", board[i]);
