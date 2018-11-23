@@ -6,32 +6,13 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 19:17:19 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/21 19:02:21 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/23 12:37:17 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	print_list(t_list *lst)
-{
-	t_list *tmp;
-	int i;
-
-	tmp = lst;
-	while (tmp)
-	{
-		i = 0;
-		while (((char **)tmp->content)[i])
-		{
-			printf("%s\n", ((char **)tmp->content)[i]);
-			i++;
-		}
-		printf("\n");
-		tmp = tmp->next;
-	}
-}
-
-char	*get_line(int fd) // returns 1 line from GNL and checks errors
+char	*get_line(int fd)
 {
 	char	*line;
 	int		i;
@@ -41,11 +22,11 @@ char	*get_line(int fd) // returns 1 line from GNL and checks errors
 	{
 		while (line[i])
 		{
-			if ((line[i] != '.' && line[i] != '#')|| i > 3)
+			if ((line[i] != '.' && line[i] != '#') || i > 3)
 				return (NULL);
 			i++;
 		}
-		if (i == 4 || !ft_strcmp(line, "\n"))
+		if (i == 4)
 			return (line);
 	}
 	return (NULL);
@@ -74,16 +55,13 @@ char	**get_tetri(int fd)
 	return (NULL);
 }
 
-int		parser(int fd)
+t_list		*parser(int fd)
 {
 	char 	**tetri;
 	t_list	*list;
 	t_list	*node;
-	int i;
 
 	list = NULL;
-
-	i = -1;
 	while (((tetri = get_tetri(fd)) != NULL))
 	{
 		if (check_blocks(tetri))
@@ -97,6 +75,5 @@ int		parser(int fd)
 			return (0);
 		}
 	}
-	print_list(list);
-	return (1);
+	return (list);
 }

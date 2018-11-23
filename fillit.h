@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:09:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/21 18:53:59 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/23 13:16:49 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,24 @@
 ** By Yalaouf, made with 🤡🍆🍆🍆🍆🍆🍆🍆🍆🍆🍆🍆🍆
 */
 
-typedef struct		s_tetri
-{
-	char			**shape;
-	struct s_tetri	*next;
-	struct s_tetri	*prev;
-}					t_tetri;
+t_list		*parser(int fd);
 
-int			parser(int fd);
-t_tetri		*ft_list_new(void);
-int			ft_list_size(t_tetri *head);
-void		ft_list_push_back(t_tetri **list, char **tetri);
-
-char	*get_line(int fd);
+char		*get_line(int fd);
 char		**get_tetri(int fd);
 
 void	test_print(char **tetri);
 void	print_list(t_list *lst);
 int		check_blocks(char **tetri);
+int		check_shape(char **tetri);
+
+
+int		board_initsize(t_list *list);
+char	**init_board(t_list *list);
+void	print_board(char **board);
+
+int		place_piece(char **tetri, char **board, int x, int y);
+int		valid_piece(char **tetri, char **board, int x, int y, int c);
+int		align_piece(char **tetri);
+
 
 #endif
