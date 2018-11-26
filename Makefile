@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+         #
+#    By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/19 12:25:14 by yoribeir          #+#    #+#              #
-#    Updated: 2018/11/23 12:39:42 by yoribeir         ###   ########.fr        #
+#    Updated: 2018/11/26 15:52:03 by anonymous        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ INCLUDES = includes
 LIBS = libft
 LIB = ft
 FLAGS = -Wall -Werror -Wextra
-SRCS = main.c parser.c check.c solver.c board.c utils.c
+SRCS = main.c reader.c check.c solver.c board.c utils.c
 SRCSREP = srcs
 OBJS = $(SRCS:.c=.o)
 
@@ -27,7 +27,7 @@ all : $(NAME)
 %.o : $(SRCSREP)/%.c
 	$(CC) $(FLAGS) -I$(INCLUDES) -c $^
 
-$(NAME) : $(OBJS)
+$(NAME) : $(OBJS) fillit.h
 	@make -C libft
 	$(CC) $(FLAGS) -I$(INCLUDES) $^ -L$(LIBS) -l$(LIB) -o $@
 
