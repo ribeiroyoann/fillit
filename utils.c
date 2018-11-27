@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 12:36:49 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/26 17:36:47 by anonymous        ###   ########.fr       */
+/*   Updated: 2018/11/27 16:03:11 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,19 @@ void	print_tetri(char **tetri)
 		printf(CYN"%s\n"RESET, tetri[i]);
 		i++;
 	}
+}
+
+void	free_map(char **board, int boardsize)
+{
+	int		y;
+
+	y = 0;
+	while (y < boardsize)
+	{
+		free(board[y]);
+		y++;
+	}
+	free(board);
 }
 
 void	free_list(t_list *list)

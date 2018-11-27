@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reader.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 15:46:34 by anonymous         #+#    #+#             */
-/*   Updated: 2018/11/26 18:16:08 by anonymous        ###   ########.fr       */
+/*   Updated: 2018/11/27 11:38:57 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int		check_buffer(char *buffer)
 		i++;
 	}
 	printf("LINE %d\n", count);
-	if (count == 5)
+	if (count == 5 || count == 4)
 		return (1);
 	printf("CHECK BUFFER\n");
 	return (0);
@@ -88,13 +88,14 @@ char	**get_tetris(char *buffer)
 
 	i = 0;
 	start = 0;
-	tetri = malloc(sizeof(char *) * 4);
+	tetri = malloc(sizeof(char *) * 5);
 	while (i < 4)
 	{
 		tetri[i] = ft_strsub(buffer, start, 4);
 		i++;
 		start += 5;
 	}
+	tetri[i] = 0;
 	return (tetri);
 }
 
@@ -110,7 +111,7 @@ int		reader(int fd)
 	{
 		buffer[readsz] = '\0';
 		if (check_buffer(buffer))
-			tetri = get_tetris(buffer);
+		tetri = get_tetris(buffer);
 		if (check_tetri(tetri) && check_shape(tetri))
 			ft_lstpushback(&list, ft_lstnew(tetri, 32));
 		else

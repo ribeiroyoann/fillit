@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 12:38:23 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/23 16:45:41 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/27 15:57:23 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,12 @@ int		board_initsize(t_list *list)
 	return (boardsize);
 }
 
-char	**init_board(t_list *list)
+char	**init_board(t_list *list, int boardsize)
 {
 	char	**board;
-	int		boardsize;
 	int		i;
 
 	i = 0;
-	boardsize = board_initsize(list);
 	board = malloc(sizeof(char *) * boardsize);
 	while (i < boardsize)
 	{

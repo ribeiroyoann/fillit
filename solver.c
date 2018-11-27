@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 14:29:02 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/23 16:45:41 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/27 17:13:53 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,31 +98,52 @@ int		align_piece3(char **tetri)
 	return (0);
 }
 
-int		solve(t_list *list, char **board)
+int		solve(t_list *list, char **board, int boardsize, int x, int y)
 {
-	int x;
-	int y;
-	int letter;
-	int	offsetx;
-	int	offsety;
+	int		letter;
 
 	y = 0;
-	x = 0;
 	letter = 'A';
-	while (list->next)
+	while (y < boardsize)
 	{
-		printf("y = %d ; ", align_piece(list->content));
-		printf("x = %d\n", align_piece3(list->content));
-		offsety = align_piece(list->content);
-		offsetx = align_piece3(list->content);
-		if (place_piece(list->content, board, (y - offsety), (x - offsetx)))
+		x = 0;
+		while (x < boardsize)
 		{
-			valid_piece(list->content, board, (y - offsety), (x - offsetx), letter);
-			y++;
+			if (place_piece(list->content, board, x, y))
+			{
+				if (valid_piece(list->content, board, x, y, letter))
+					{
+						if (!list->next)
+							return 1;
+						solve(list->next, board, boardsize, x, y);
+					}
+			}
+			else
+				return 0;
 			x++;
-			letter++;
 		}
-		list = list->next;
+		y++;
 	}
 	return (1);
+}
+
+char	**solver(t_list *list)
+{
+	char	**board;
+	int		boardsize;
+
+	boardsize = board_initsize(list);
+	board = init_board(list, boardsize);
+	while (1)
+	{
+		print_board(board);
+		if (!solve(list, board, boardsize, 0, 0))
+		{
+			boardsize++;
+			free(board);
+			init_board(list, boardsize);
+		}
+		else
+			return (board);
+	}
 }

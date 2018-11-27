@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 19:17:19 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/26 15:46:54 by anonymous        ###   ########.fr       */
+/*   Updated: 2018/11/27 12:48:45 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#define TETRI_SIZE 20
 
 char	*get_line(int fd)
 {
