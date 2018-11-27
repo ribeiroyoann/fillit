@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 15:46:34 by anonymous         #+#    #+#             */
-/*   Updated: 2018/11/26 18:16:08 by anonymous        ###   ########.fr       */
+/*   Updated: 2018/11/27 12:27:49 by oumaysou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int		check_line(char *line)
 	{
 		if (line[i] != '#' && line[i] != '.')
 		{
-			printf("CHECK LINE\n");
 			return (0);
 		}
 		i++;
@@ -56,7 +55,6 @@ int		check_tetri(char **tetri)
 	}
 	if (count == 4)
 		return (1);
-	printf("CHECK TETRI\n");
 	return (0);
 }
 
@@ -73,10 +71,8 @@ int		check_buffer(char *buffer)
 			count++;
 		i++;
 	}
-	printf("LINE %d\n", count);
 	if (count == 5)
 		return (1);
-	printf("CHECK BUFFER\n");
 	return (0);
 }
 
@@ -88,13 +84,14 @@ char	**get_tetris(char *buffer)
 
 	i = 0;
 	start = 0;
-	tetri = malloc(sizeof(char *) * 4);
+	tetri = malloc(sizeof(char *) * 5);
 	while (i < 4)
 	{
 		tetri[i] = ft_strsub(buffer, start, 4);
 		i++;
 		start += 5;
 	}
+	tetri[i] = 0;
 	return (tetri);
 }
 

@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 12:36:49 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/26 17:36:47 by anonymous        ###   ########.fr       */
+/*   Updated: 2018/11/27 14:19:06 by oumaysou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	print_list(t_list *lst)
 			printf("%s\n", ((char **)tmp->content)[i]);
 			i++;
 		}
-		printf("\n");
+		if (tmp->next)
+			printf("\n");
 		tmp = tmp->next;
 	}
 }
@@ -35,7 +36,6 @@ void	print_board(char **board)
 {
 	int i = 0;
 
-	printf("\n");
 	while (board[i])
 	{
 		printf("%s\n", board[i]);

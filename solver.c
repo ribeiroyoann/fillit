@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 14:29:02 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/23 16:45:41 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/27 14:26:02 by oumaysou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,17 +109,15 @@ int		solve(t_list *list, char **board)
 	y = 0;
 	x = 0;
 	letter = 'A';
-	while (list->next)
+	while (list)
 	{
-		printf("y = %d ; ", align_piece(list->content));
-		printf("x = %d\n", align_piece3(list->content));
 		offsety = align_piece(list->content);
 		offsetx = align_piece3(list->content);
 		if (place_piece(list->content, board, (y - offsety), (x - offsetx)))
 		{
 			valid_piece(list->content, board, (y - offsety), (x - offsetx), letter);
-			y++;
-			x++;
+			y = offsetx;
+			x = offsety;
 			letter++;
 		}
 		list = list->next;

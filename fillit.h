@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:09:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/26 17:24:27 by anonymous        ###   ########.fr       */
+/*   Updated: 2018/11/27 14:32:50 by oumaysou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		check_shape(char **tetri);
 
 
 int		board_initsize(t_list *list);
-char	**init_board(t_list *list);
+char	**init_board(t_list *list, int boardsize);
 void	print_board(char **board);
 
 int		place_piece(char **tetri, char **board, int x, int y);

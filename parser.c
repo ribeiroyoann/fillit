@@ -6,12 +6,12 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 19:17:19 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/26 15:46:54 by anonymous        ###   ########.fr       */
+/*   Updated: 2018/11/27 12:37:13 by oumaysou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#define TETRI_SIZE 20
+#define TETRI_SIZE 21
 
 char	*get_line(int fd)
 {
@@ -75,6 +75,7 @@ t_list		*parser(int fd)
 			ft_putstr("error\n");
 			return (0);
 		}
+ 	//print_board(board);
 	}
 	return (list);
 }
