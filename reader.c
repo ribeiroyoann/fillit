@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reader.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 15:46:34 by anonymous         #+#    #+#             */
-/*   Updated: 2018/11/27 11:38:57 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/28 20:49:21 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,70 +14,28 @@
 
 #define TETRI_SIZE 21
 
-int		check_line(char *line)
-{
-	int		i;
-
-	i = 0;
-	while (i < 4)
-	{
-		if (line[i] != '#' && line[i] != '.')
-		{
-			printf("CHECK LINE\n");
-			return (0);
-		}
-		i++;
-	}
-	return (1);
-}
-
-int		check_tetri(char **tetri)
-{
-	int		y;
-	int		i;
-	int		count;
-	int		countl;
-
-	y = 0;
-	count = 0;
-	countl = 0;
-	while (tetri[y])
-	{
-		i = 0;
-		if (!check_line(tetri[y]))
-			return (0);
-		while (tetri[y][i])
-		{
-			if (tetri[y][i] == '#')
-				count++;
-			i++;
-		}
-		y++;
-	}
-	if (count == 4)
-		return (1);
-	printf("CHECK TETRI\n");
-	return (0);
-}
-
 int		check_buffer(char *buffer)
 {
-	int count;
-	int i;
+	int		i;
+	int		count;
 
-	count = 0;
 	i = 0;
+	printf("%s\n", 	buffer);
 	while (buffer[i])
 	{
-		if (buffer[i] == '\n')
+		printf(YEL"%d [%c]\n"RESET, (i % 4), buffer[i]);
+		if (buffer[i] == '#')
 			count++;
+		if (i % 4 == 0 && buffer[i] != '\n')
+		{
+			printf(RED"%c\n"RESET,	buffer[i]);
+			return (0);
+		}
+		if (i % 4 && (buffer[i] != '#' || buffer[i] != '.'))
+			return (0);
 		i++;
 	}
-	printf("LINE %d\n", count);
-	if (count == 5 || count == 4)
-		return (1);
-	printf("CHECK BUFFER\n");
-	return (0);
+	return (count == 4);
 }
 
 char	**get_tetris(char *buffer)
@@ -111,8 +69,11 @@ int		reader(int fd)
 	{
 		buffer[readsz] = '\0';
 		if (check_buffer(buffer))
-		tetri = get_tetris(buffer);
-		if (check_tetri(tetri) && check_shape(tetri))
+		{
+			printf("OK\n");
+			tetri = get_tetris(buffer);
+		}
+		if (check_shape(tetri))
 			ft_lstpushback(&list, ft_lstnew(tetri, 32));
 		else
 		{

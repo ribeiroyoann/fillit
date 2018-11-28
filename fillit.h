@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:09:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/28 17:58:19 by anonymous        ###   ########.fr       */
+/*   Updated: 2018/11/28 18:02:19 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,6 @@ int		align_piece(char **tetri);
 int		align_piece3(char **tetri);
 
 void	align_tetrimino(char **t);
-
+void	align_list(t_list *list);
 
 #endif

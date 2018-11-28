@@ -6,7 +6,7 @@
 #    By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/19 12:25:14 by yoribeir          #+#    #+#              #
-#    Updated: 2018/11/28 17:50:14 by anonymous        ###   ########.fr        #
+#    Updated: 2018/11/28 20:39:59 by anonymous        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ INCLUDES = includes
 LIBS = libft
 LIB = ft
 FLAGS = -Wall -Werror -Wextra
-SRCS = main.c parser.c check.c solver.c board.c utils.c pieces.c
+SRCS = main.c reader.c check.c solver.c board.c utils.c pieces.c
 SRCSREP = srcs
 OBJS = $(SRCS:.c=.o)
 

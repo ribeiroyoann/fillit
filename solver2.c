@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 14:29:02 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/28 19:26:30 by anonymous        ###   ########.fr       */
+/*   Updated: 2018/11/28 17:50:08 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int		solve(t_list *list, char **board, int boardsize, int letter)
 {
 	int		x;
 	int		y;
+	int		offsetx;
+	int		offsety;
 
 	if (list == NULL)
 		return (1);
@@ -25,14 +27,16 @@ int		solve(t_list *list, char **board, int boardsize, int letter)
 		x = 0;
 		while (x < boardsize)
 		{
-			if (place_piece(list->content, board, y, x, boardsize))
+			offsety = align_piece(list->content);
+			offsetx = align_piece3(list->content);
+			if (place_piece(list->content, board, (y - offsety), (x - offsetx), boardsize))
 			{
-				valid_piece(list->content, board, y, x, letter);
-				print_board(board);
- 				if (solve(list->next, board, boardsize, letter + 1))
+				valid_piece(list->content, board, (y - offsety), (x - offsetx), letter);
+				letter++;
+ 				if (solve(list->next, board, boardsize, letter))
  					return (1);
 				else
-					valid_piece(list->content, board, y, x, '.');
+					valid_piece(list->content, board, (y - offsety), (x - offsetx), '.');
 			}
 			x++;
 		}

@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 12:13:07 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/28 17:52:10 by anonymous        ###   ########.fr       */
+/*   Updated: 2018/11/28 20:43:55 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@ int		main(int argc, char **argv)
 
 	fd = open(argv[1], O_RDONLY);
 
-	tetri = parser(fd);
-	
-	board = solver(tetri);
-	print_board(board);
+
+	reader(fd);
+	// tetri = parser(fd);
+	// print_list(tetri);
+	// align_list(tetri);
+	// board = solver(tetri);
+	// print_board(board);
 
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 17:49:49 by anonymous         #+#    #+#             */
-/*   Updated: 2018/11/28 17:58:07 by anonymous        ###   ########.fr       */
+/*   Updated: 2018/11/28 19:17:36 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int		align_piece3(char **tetri)
 	return (0);
 }
 
-void	decaly(char **t)
+void	align_y(char **t)
 {
 	char *tmp;
 
@@ -105,7 +105,7 @@ void	decaly(char **t)
 	t[3] = tmp;
 }
 
-void	decalx(char **t)
+void	align_x(char **t)
 {
 	char	tmp;
 	int		i;
@@ -125,10 +125,22 @@ void	decalx(char **t)
 void	align_tetrimino(char **t)
 {
 	while (!ft_strcmp(*t, "...."))
-		decaly(t);
+		align_y(t);
 	while (t[0][0] == '.' &&
 			t[1][0] == '.' &&
 			t[2][0] == '.' &&
 			t[3][0] == '.')
-		decalx(t);
+		align_x(t);
+}
+
+void	align_list(t_list *list)
+{
+	t_list *tmp;
+
+	tmp = list;
+	while (tmp)
+	{
+		align_tetrimino(tmp->content);
+		tmp = tmp->next;
+	}
 }
