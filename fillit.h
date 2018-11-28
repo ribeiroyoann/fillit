@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:09:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/27 16:38:41 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/28 17:58:19 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,33 +30,50 @@
 ** By Yalaouf, made with 🤡🍆🍆🍆🍆🍆🍆🍆🍆🍆🍆🍆🍆
 */
 
+// PARSER //
+
 t_list		*parser(int fd);
-
-int		reader(int fd);
-char	**get_tetris(char *buffer);
-void	print_tetri(char **tetri);
-void	free_list(t_list *list);
-void	free_map(char **board, int boardsize);
-
 char		*get_line(int fd);
 char		**get_tetri(int fd);
 
-void	test_print(char **tetri);
-void	print_list(t_list *lst);
+// READER //
+
+int		reader(int fd);
+char	**get_tetris(char *buffer);
+
+// SOLVER //
+
+int		solve(t_list *list, char **board, int boardsize, int letter);
+char	**solver(t_list *list);
+
+// CHECK //
+
 int		check_blocks(char **tetri);
 int		check_shape(char **tetri);
 
+// UTILS //
+
+void	print_tetri(char **tetri);
+void	free_list(t_list *list);
+void	free_map(char **board, int boardsize);
+void	check_offset(t_list *list);
+void	print_list(t_list *lst);
+void	print_board(char **board);
+void	test_print(char **tetri);
+
+// BOARD //
 
 int		board_initsize(t_list *list);
 char	**init_board(t_list *list, int boardsize);
-void	print_board(char **board);
 
-int		place_piece(char **tetri, char **board, int x, int y);
+// PIECES //
+
+int		place_piece(char **tetri, char **board, int x, int y, int boardsize);
 int		valid_piece(char **tetri, char **board, int x, int y, int c);
 int		align_piece(char **tetri);
 int		align_piece3(char **tetri);
-int		solve(t_list *list, char **board, int boardsize, int x, int y);
-char	**solver(t_list *list);
+
+void	align_tetrimino(char **t);
 
 
 #endif

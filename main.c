@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 12:13:07 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/27 16:38:39 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/28 17:52:10 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ int		main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 
 	tetri = parser(fd);
-	print_list(tetri);
-
+	
 	board = solver(tetri);
 	print_board(board);
 

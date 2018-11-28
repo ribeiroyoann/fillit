@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 12:36:49 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/27 16:03:11 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/28 17:45:14 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,22 @@ void	free_list(t_list *list)
 		list = list->next;
 		free(tmp->content);
 		ft_memdel((void *)&tmp);
+	}
+}
+
+void	check_offset(t_list *list)
+{
+	t_list *tmp;
+	int		offsetx;
+	int		offsety;
+
+	tmp = list;
+	offsety = align_piece(list->content);
+	offsetx = align_piece3(list->content);
+	while (tmp)
+	{
+		printf("%d %d\n", offsetx, offsety);
+		print_tetri(tmp->content);
+		tmp = tmp->next;
 	}
 }

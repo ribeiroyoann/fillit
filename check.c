@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 18:51:05 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/22 12:15:45 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/11/28 17:49:01 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	check_blocks(char **tetri)
+int		check_blocks(char **tetri)
 {
 	int y;
 	int i;
@@ -36,7 +36,7 @@ int	check_blocks(char **tetri)
 	return (0);
 }
 
-int	check_around(char **tetri, int x, int y)
+int		check_around(char **tetri, int x, int y)
 {
 	if (tetri[x + 1] && tetri[x + 1][y] == '#')
 		return (1);
