@@ -38,35 +38,39 @@ int		check_blocks(char **tetri)
 
 int		check_around(char **tetri, int x, int y)
 {
+	int		count;
+
+	count = 0;
 	if (tetri[x + 1] && tetri[x + 1][y] == '#')
-		return (1);
+		count++;
 	if (tetri[x - 1] && tetri[x - 1][y] == '#')
-		return (1);
+		count++;
 	if (tetri[x][y + 1] && tetri[x][y + 1] == '#')
-		return (1);
+		count++;
 	if (tetri[x][y - 1] && tetri[x][y - 1] == '#')
-		return (1);
-	return (0);
+		count++;
+	return (count);
 }
 
-int	check_shape(char **tetri)
+int		check_shape(char **tetri)
 {
 	int x;
 	int y;
+	int	ret;
 
-	x = 0;
-	while (tetri[x])
+	y = 0;
+	ret = 0;
+	while (y < 4)
 	{
-		y = 0;
-		while (tetri[x][y])
+		x = 0;
+		while (x < 4)
 		{
-			if (tetri[x][y] == '.' || (tetri[x][y] == '#' &&
-						check_around(tetri, x, y)))
-				y++;
-			else
-				return(0);
+			if (tetri[y][x] == '#')
+				ret += check_around(tetri, y, x);
+			x++;
 		}
-		x++;
+		y++;
 	}
-	return (1);	
+	printf(RED"ret %d\n"RESET, ret);
+	return ((ret == 6) || (ret == 8));
 }

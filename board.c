@@ -21,6 +21,7 @@ int		board_initsize(t_list *list)
 	boardsize = 1;
 	while (boardsize * boardsize < lstsize * 4)
 		boardsize++;
+	printf("%d\n", boardsize);
 	return (boardsize);
 }
 

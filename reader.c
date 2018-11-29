@@ -18,21 +18,34 @@ int		check_buffer(char *buffer)
 {
 	int		i;
 	int		count;
+	int		offset;
 
 	i = 0;
-	printf("%s\n", 	buffer);
+	count = 0;
+	offset = 4;
 	while (buffer[i])
 	{
-		printf(YEL"%d [%c]\n"RESET, (i % 4), buffer[i]);
-		if (buffer[i] == '#')
-			count++;
-		if (i % 4 == 0 && buffer[i] != '\n')
+		if (buffer[i] != '#' && buffer[i] != '.' && buffer[i] != '\n')
 		{
-			printf(RED"%c\n"RESET,	buffer[i]);
+			printf("[%c]\n", buffer[i]);
+			printf("ERROR\n");
 			return (0);
 		}
-		if (i % 4 && (buffer[i] != '#' || buffer[i] != '.'))
+		if (buffer[offset] != '\n' && offset < 16)
+		{
+			printf("[%c]\n", buffer[offset]);
+			printf("ERROR1\n");
 			return (0);
+		}
+		if (buffer[i] == '#')
+			count++;
+		if (offset > 20)
+		{
+			offset++;
+			if (buffer[offset] == '\n')
+				return (0);
+		}
+		offset += 5;
 		i++;
 	}
 	return (count == 4);
@@ -70,18 +83,23 @@ int		reader(int fd)
 		buffer[readsz] = '\0';
 		if (check_buffer(buffer))
 		{
-			printf("OK\n");
 			tetri = get_tetris(buffer);
-		}
-		if (check_shape(tetri))
+			print_tetri(tetri);
+			if (!check_shape(tetri))
+			{
+				printf("SHAPE ERROR\n");
+				return (0);
+			}
+			printf("SHAPE OK\n");
 			ft_lstpushback(&list, ft_lstnew(tetri, 32));
+		}
 		else
 		{
-			printf("ERROR\n");
+			printf("ERROR2\n");
 			free_list(list);
 			return (0);
 		}
 	}
-	print_list(list);
+	// print_list(list);
 	return (1);
 }

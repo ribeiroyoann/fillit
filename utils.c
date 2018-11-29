@@ -47,7 +47,7 @@ void	print_tetri(char **tetri)
 {
 	int i = 0;
 
-	printf("\n");
+	// printf("\n");
 	while (tetri[i])
 	{
 		printf(CYN"%s\n"RESET, tetri[i]);
@@ -72,6 +72,8 @@ void	free_list(t_list *list)
 {
 	t_list	*tmp;
 
+	if (!list)
+		return ;
 	while (list)
 	{
 		tmp = list;
