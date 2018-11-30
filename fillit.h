@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:09:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/28 18:02:19 by anonymous        ###   ########.fr       */
+/*   Updated: 2018/11/30 20:05:16 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ char		**get_tetri(int fd);
 
 // READER //
 
-int		reader(int fd);
+// int		reader(int fd);
+t_list		*reader(int fd);
 char	**get_tetris(char *buffer);
 
 // SOLVER //
@@ -54,8 +55,9 @@ int		check_shape(char **tetri);
 // UTILS //
 
 void	print_tetri(char **tetri);
-void	free_list(t_list *list);
-void	free_map(char **board, int boardsize);
+t_list	*free_list(t_list *list);
+void	free_tetri(char **tetri);
+void	free_board(char **board);
 void	check_offset(t_list *list);
 void	print_list(t_list *lst);
 void	print_board(char **board);

@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 12:36:49 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/28 17:45:14 by anonymous        ###   ########.fr       */
+/*   Updated: 2018/11/30 20:12:43 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,67 +35,64 @@ void	print_board(char **board)
 {
 	int i = 0;
 
-	printf("\n");
 	while (board[i])
 	{
-		printf("%s\n", board[i]);
+		printf(YEL"%s\n"RESET, board[i]);
 		i++;
 	}
+	printf("\n");
 }
 
 void	print_tetri(char **tetri)
 {
 	int i = 0;
 
-	// printf("\n");
 	while (tetri[i])
 	{
 		printf(CYN"%s\n"RESET, tetri[i]);
 		i++;
 	}
+	printf("\n");
 }
 
-void	free_map(char **board, int boardsize)
+void	free_board(char **board)
 {
-	int		y;
+	int i;
 
-	y = 0;
-	while (y < boardsize)
+	i = 0;
+	while (board[i])
 	{
-		free(board[y]);
-		y++;
+		free(board[i]);
+		i++;
 	}
 	free(board);
 }
 
-void	free_list(t_list *list)
+void	free_tetri(char **tetri)
+{
+	int		i;
+
+	i = 0;
+	while (i < 4)
+	{
+		free(tetri[i]);
+		i++;
+	}
+	free(tetri);
+}
+
+t_list	*free_list(t_list *list)
 {
 	t_list	*tmp;
 
 	if (!list)
-		return ;
+		return (NULL);
 	while (list)
 	{
 		tmp = list;
 		list = list->next;
-		free(tmp->content);
-		ft_memdel((void *)&tmp);
+		free_tetri(tmp->content);
+		free(tmp);
 	}
-}
-
-void	check_offset(t_list *list)
-{
-	t_list *tmp;
-	int		offsetx;
-	int		offsety;
-
-	tmp = list;
-	offsety = align_piece(list->content);
-	offsetx = align_piece3(list->content);
-	while (tmp)
-	{
-		printf("%d %d\n", offsetx, offsety);
-		print_tetri(tmp->content);
-		tmp = tmp->next;
-	}
+	return (NULL);
 }

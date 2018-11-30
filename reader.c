@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 15:46:34 by anonymous         #+#    #+#             */
-/*   Updated: 2018/11/30 18:17:54 by anonymous        ###   ########.fr       */
+/*   Updated: 2018/11/30 20:13:14 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,30 +89,25 @@ char	**get_tetris(char *buffer)
 	return (tetri);
 }
 
-int		reader(int fd)
+t_list		*reader(int fd)
 {
 	int		readsz;
 	char	buffer[TETRI_SIZE + 1];
 	char	**tetri;
+	char	**tmp;
 	t_list	*list;
 
 	list = NULL;
 	while ((readsz = read(fd, buffer, TETRI_SIZE)))
 	{
 		buffer[readsz] = '\0';
-		if (!check_buffer(buffer))
+		if (check_buffer(buffer) && check_links(buffer))
 		{
-			printf("ERROR BUFFER\n");
-			return (0);
+			tetri = get_tetris(buffer);
+			ft_lstpushback(&list, ft_lstnew(tetri, 32));
 		}
-		if (!check_links(buffer))
-		{
-			printf("ERROR LINKS\n");
-			return (0);
-		}
-		tetri = get_tetris(buffer);
-		print_tetri(tetri);
-		ft_lstpushback(&list, ft_lstnew(tetri, 32));
+		else
+			return (free_list(list));
 	}
-	return (1);
+	return (list);
 }

@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 17:49:49 by anonymous         #+#    #+#             */
-/*   Updated: 2018/11/28 19:17:36 by anonymous        ###   ########.fr       */
+/*   Updated: 2018/11/30 18:49:06 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ int		place_piece(char **tetri, char **board, int y, int x, int boardsize)
 		j = 0;
 		while (j < 4)
 		{
-			if ((x + i) >= boardsize || (j + y) >= boardsize)
-				return (0);
 			if ((tetri[i][j] == '#' && board[y + i][j + x] != '.'))
 				return (0);
 			j++;
@@ -52,46 +50,6 @@ int		valid_piece(char **tetri, char **board, int y, int x, int c)
 		i++;
 	}
 	return (1);
-}
-
-int		align_piece(char **tetri)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < 4)
-	{
-		j = 0;
-		while (j < 4)
-		{
-			if (tetri[i][j] == '#')
-				return (i);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-
-int		align_piece3(char **tetri)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (i < 4)
-	{
-		j = 0;
-		while (j < 4)
-		{
-			if (tetri[j][i] == '#')
-				return (i);
-			j++;
-		}
-		i++;
-	}
-	return (0);
 }
 
 void	align_y(char **t)
