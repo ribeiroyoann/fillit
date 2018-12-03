@@ -23,6 +23,8 @@ int		place_piece(char **tetri, char **board, int y, int x, int boardsize)
 		j = 0;
 		while (j < 4)
 		{
+			// if ((y + i) >= boardsize || (j + x >= boardsize))
+			// 	return (0);
 			if ((tetri[i][j] == '#' && board[y + i][j + x] != '.'))
 				return (0);
 			j++;

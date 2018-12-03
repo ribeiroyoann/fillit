@@ -32,6 +32,11 @@ int		check_links(char *buffer)
 		}
 		i++;
 	}
+	if (count != 3 && count != 4)
+	{
+		printf("%d\n", count);
+		printf("LINKS ERROR\n");
+	}
 	return (count == 3 || count == 4);
 }
 
@@ -67,6 +72,8 @@ int		check_buffer(char *buffer)
 		offset += 5;
 		i++;
 	}
+	if (count != 4)
+		printf("COUNT ERROR\n");
 	return (count == 4);
 }
 
@@ -78,7 +85,7 @@ char	**get_tetris(char *buffer)
 
 	i = 0;
 	start = 0;
-	tetri = malloc(sizeof(char *) * 5);
+	tetri = ft_memalloc(sizeof(char *) * 5);
 	while (i < 4)
 	{
 		tetri[i] = ft_strsub(buffer, start, 4);
@@ -101,13 +108,18 @@ t_list		*reader(int fd)
 	while ((readsz = read(fd, buffer, TETRI_SIZE)))
 	{
 		buffer[readsz] = '\0';
+		if (!check_buffer(buffer) || !check_links(buffer))
+			printf("READER ERROR\n");
 		if (check_buffer(buffer) && check_links(buffer))
 		{
 			tetri = get_tetris(buffer);
 			ft_lstpushback(&list, ft_lstnew(tetri, 32));
 		}
 		else
+		{
+			printf("FREE LIST\n");
 			return (free_list(list));
+		}
 	}
 	return (list);
 }

@@ -28,17 +28,18 @@ char	**init_board(t_list *list, int boardsize)
 {
 	char	**board;
 	int		i;
+	int		j;
 
 	i = 0;
-	if (!(board = malloc(sizeof(char *) * boardsize)))
-		return (NULL);
+	board = ft_memalloc(sizeof(char *) * boardsize + 1);
 	while (i < boardsize)
 	{
-		if (!(board[i] = malloc(sizeof(char) * boardsize)))
-			return (NULL);
-		ft_memset(board[i], '.', boardsize);
+		board[i] = ft_strnew(boardsize);
+		j = 0;
+		while (j < boardsize)
+			board[i][j++] = '.';
 		i++;
 	}
-	board[i] = 0;
+	// board[i] = 0;
 	return (board);
 }

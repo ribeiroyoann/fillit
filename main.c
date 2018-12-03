@@ -28,6 +28,7 @@ int		main(int argc, char **argv)
 	if (!tetri)
 		return (0);
 	align_list(tetri);
+	print_list(tetri);
 	board = solver(tetri);
 	print_board(board);
 	free_list(tetri);

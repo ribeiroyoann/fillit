@@ -27,6 +27,7 @@ int		solve(t_list *list, char **board, int boardsize, int letter)
 		{
 			if (place_piece(list->content, board, y, x, boardsize))
 			{
+				printf("OK\n");
 				valid_piece(list->content, board, y, x, letter);
  				if (solve(list->next, board, boardsize, letter + 1))
  					return (1);
