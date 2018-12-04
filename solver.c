@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 14:29:02 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/30 20:05:05 by anonymous        ###   ########.fr       */
+/*   Updated: 2018/12/04 15:18:37 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int		solve(t_list *list, char **board, int boardsize, int letter)
 		{
 			if (place_piece(list->content, board, y, x, boardsize))
 			{
-				printf("OK\n");
 				valid_piece(list->content, board, y, x, letter);
  				if (solve(list->next, board, boardsize, letter + 1))
  					return (1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 12:36:49 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/30 20:12:43 by anonymous        ###   ########.fr       */
+/*   Updated: 2018/12/04 18:01:40 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	print_board(char **board)
 
 	while (board[i])
 	{
-		printf(YEL"%s\n"RESET, board[i]);
+		printf("%s\n", board[i]);
 		i++;
 	}
 	printf("\n");
@@ -94,5 +94,6 @@ t_list	*free_list(t_list *list)
 		free_tetri(tmp->content);
 		free(tmp);
 	}
+	list = NULL;
 	return (NULL);
 }

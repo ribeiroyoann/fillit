@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   board.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 12:38:23 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/30 19:05:07 by anonymous        ###   ########.fr       */
+/*   Updated: 2018/12/04 15:19:13 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ char	**init_board(t_list *list, int boardsize)
 			board[i][j++] = '.';
 		i++;
 	}
-	// board[i] = 0;
+	board[i] = 0;
 	return (board);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reader.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 15:46:34 by anonymous         #+#    #+#             */
-/*   Updated: 2018/11/30 20:13:14 by anonymous        ###   ########.fr       */
+/*   Updated: 2018/12/04 18:04:22 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,29 @@ int		check_links(char *buffer)
 		}
 		i++;
 	}
-	if (count != 3 && count != 4)
-	{
-		printf("%d\n", count);
-		printf("LINKS ERROR\n");
-	}
 	return (count == 3 || count == 4);
+}
+
+int		check_newline(char *buffer)
+{
+	int i;
+
+	i = 4;
+	printf("%s\n", buffer);
+	while (buffer[i] == '\n')
+	{
+		printf(RED"[%c]\n"RESET, buffer[i]);
+		i += 5;
+	}
+	// i++;
+	printf("----\n");
+	printf(RED"[%c]\n"RESET, buffer[i]);
+	// if (buffer[i] != '\n')
+	// 	return (0);
+	// printf(YEL"%c\n"RESET, buffer[TETRI_SIZE]);
+	// if (buffer[TETRI_SIZE] != '\n')
+		// return (0);
+	return (1);
 }
 
 int		check_buffer(char *buffer)
@@ -48,32 +65,19 @@ int		check_buffer(char *buffer)
 
 	i = 0;
 	count = 0;
-	offset = 4;
+	if (check_newline(buffer) == 0)
+	{
+		printf("NEWL ERROR\n");
+		return (0);
+	}
 	while (buffer[i])
 	{
 		if (buffer[i] != '#' && buffer[i] != '.' && buffer[i] != '\n')
-		{
-			printf("ERROR CHARS\n");
 			return (0);
-		}
-		if (buffer[offset] != '\n' && offset < 16)
-		{
-			printf("ERROR NEWL\n");
-			return (0);
-		}
 		if (buffer[i] == '#')
 			count++;
-		if (offset > 20)
-		{
-			offset++;
-			if (buffer[offset] == '\n')
-				return (0);
-		}
-		offset += 5;
 		i++;
 	}
-	if (count != 4)
-		printf("COUNT ERROR\n");
 	return (count == 4);
 }
 
@@ -81,6 +85,7 @@ char	**get_tetris(char *buffer)
 {
 	int		i;
 	int		start;
+	char	*tmp;
 	char	**tetri;
 
 	i = 0;
@@ -101,19 +106,17 @@ t_list		*reader(int fd)
 	int		readsz;
 	char	buffer[TETRI_SIZE + 1];
 	char	**tetri;
-	char	**tmp;
 	t_list	*list;
 
 	list = NULL;
 	while ((readsz = read(fd, buffer, TETRI_SIZE)))
 	{
 		buffer[readsz] = '\0';
-		if (!check_buffer(buffer) || !check_links(buffer))
-			printf("READER ERROR\n");
 		if (check_buffer(buffer) && check_links(buffer))
 		{
 			tetri = get_tetris(buffer);
 			ft_lstpushback(&list, ft_lstnew(tetri, 32));
+			free(tetri);
 		}
 		else
 		{

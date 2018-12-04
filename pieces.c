@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pieces.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 17:49:49 by anonymous         #+#    #+#             */
-/*   Updated: 2018/11/30 18:49:06 by anonymous        ###   ########.fr       */
+/*   Updated: 2018/12/04 15:18:56 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@ int		place_piece(char **tetri, char **board, int y, int x, int boardsize)
 		j = 0;
 		while (j < 4)
 		{
-			// if ((y + i) >= boardsize || (j + x >= boardsize))
-			// 	return (0);
-			if ((tetri[i][j] == '#' && board[y + i][j + x] != '.'))
-				return (0);
+			if (tetri[i][j] == '#')
+			{
+				if ((y + i) >= boardsize || (j + x >= boardsize))
+					return (0);
+				if (board[y + i][j + x] != '.')
+					return (0);
+			}
 			j++;
 		}
 		i++;
