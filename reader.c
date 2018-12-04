@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 15:46:34 by anonymous         #+#    #+#             */
-/*   Updated: 2018/12/04 18:04:22 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/04 18:39:25 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,17 @@ int		check_newline(char *buffer)
 	int i;
 
 	i = 4;
-	printf("%s\n", buffer);
-	while (buffer[i] == '\n')
+	while (i < 20)
 	{
-		printf(RED"[%c]\n"RESET, buffer[i]);
+		if (buffer[i] != '\n')
+			return (0);
 		i += 5;
 	}
-	// i++;
-	printf("----\n");
-	printf(RED"[%c]\n"RESET, buffer[i]);
-	// if (buffer[i] != '\n')
-	// 	return (0);
-	// printf(YEL"%c\n"RESET, buffer[TETRI_SIZE]);
-	// if (buffer[TETRI_SIZE] != '\n')
-		// return (0);
-	return (1);
+	if (buffer[i - 4] == '\n')
+		return (1);
+	if (buffer[i - 4] == '\0')
+		return (2);
+	return (0);
 }
 
 int		check_buffer(char *buffer)
@@ -66,10 +62,7 @@ int		check_buffer(char *buffer)
 	i = 0;
 	count = 0;
 	if (check_newline(buffer) == 0)
-	{
-		printf("NEWL ERROR\n");
 		return (0);
-	}
 	while (buffer[i])
 	{
 		if (buffer[i] != '#' && buffer[i] != '.' && buffer[i] != '\n')
@@ -120,7 +113,7 @@ t_list		*reader(int fd)
 		}
 		else
 		{
-			printf("FREE LIST\n");
+			ft_putendl_fd("error", 1);
 			return (free_list(list));
 		}
 	}
