@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:09:34 by yoribeir          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/11/22 16:11:59 by oumaysou         ###   ########.fr       */
-=======
-/*   Updated: 2018/12/05 12:18:01 by oumaysou         ###   ########.fr       */
->>>>>>> 611ee46c5b81c0e35ae65933735a03803d41c784
+/*   Updated: 2018/12/05 12:48:29 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +28,6 @@
 
 typedef struct	s_point
 {
-<<<<<<< HEAD
-	char			**shape;
-	struct s_tetri	*next;
-	struct s_tetri	*prev;
-}					t_tetri;
-
-int					parser(int fd);
-t_tetri				*ft_list_new(void);
-int					ft_list_size(t_tetri *head);
-void				ft_list_push_back(t_tetri **list, char **tetri);
-
-char				*get_line(int fd);
-char				**get_tetri(int fd);
-void				test_print(char **tetri);
-void				print_list(t_list *lst);
-int					check_blocks(char **tetri);
-int					check_shape(char **tetri);
-=======
 	int x;
 	int	y;
 }				t_point;
@@ -102,5 +80,4 @@ int				align_piece3(char **tetri);
 void			align_tetrimino(char **t);
 void			align_list(t_list *list);
 
->>>>>>> 611ee46c5b81c0e35ae65933735a03803d41c784
 #endif

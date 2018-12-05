@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 12:38:23 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/04 15:19:13 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/05 12:49:01 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		board_initsize(t_list *list)
 	int		boardsize;
 
 	lstsize = ft_lstsize(list);
-	boardsize = 4;
+	boardsize = 1;
 	while (boardsize * boardsize < lstsize * 4)
 		boardsize++;
 	return (boardsize);
