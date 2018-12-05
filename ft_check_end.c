@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_end.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oumaysou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 19:31:41 by oumaysou          #+#    #+#             */
-/*   Updated: 2018/12/05 12:29:47 by oumaysou         ###   ########.fr       */
+/*   Updated: 2018/12/05 14:44:18 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,4 @@ int		ft_check_end(int fd)
 			(tmp[ft_strlen(tmp) - 2] != '.' && tmp[ft_strlen(tmp) - 2] != '#'))
 		return (0);
 	return (1);
-}
-
-void	align_list(t_list *list)
-{
-	t_list *tmp;
-
-	tmp = list;
-	while (tmp)
-	{
-		align_tetrimino(tmp->content);
-		tmp = tmp->next;
-	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reader.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oumaysou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 12:22:13 by oumaysou          #+#    #+#             */
-/*   Updated: 2018/12/05 12:37:37 by oumaysou         ###   ########.fr       */
+/*   Updated: 2018/12/05 14:43:49 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ t_list	*reader(int fd)
 		if (check_buffer(buffer) && check_links(buffer))
 		{
 			tetri = get_tetris(buffer);
+			align_tetrimino(tetri);
 			ft_lstpushback(&list, ft_lstnew(tetri, 32));
 			free(tetri);
 		}

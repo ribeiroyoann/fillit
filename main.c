@@ -6,38 +6,44 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 12:13:07 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/05 12:39:49 by oumaysou         ###   ########.fr       */
+/*   Updated: 2018/12/05 14:44:10 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		main(int argc, char **argv)
+void	fillit(char **argv)
 {
 	int		fd;
 	t_list	*tetri;
 	char	**board;
 
-	if (argc != 2)
-	{
-		ft_putendl("USAGE: ./fillit [INPUT MAP]");
-		return (0);
-	}
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1 || !ft_check_end(fd))
 	{
 		ft_putendl_fd("error", 1);
-		return (0);
+		return ;
 	}
 	close(fd);
 	fd = open(argv[1], O_RDONLY);
 	tetri = reader(fd);
 	if (!tetri)
-		return (0);
-	align_list(tetri);
+		return ;
 	board = solver(tetri);
 	print_board(board);
+	close(fd);
 	free_list(tetri);
 	free_board(board);
+}
+
+int		main(int argc, char **argv)
+{
+	if (argc != 2)
+	{
+		ft_putendl("USAGE: ./fillit [INPUT MAP]");
+		return (0);
+	}
+	else
+		fillit(argv);
 	return (0);
 }
