@@ -6,30 +6,11 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 19:17:19 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/22 17:20:34 by oumaysou         ###   ########.fr       */
+/*   Updated: 2018/12/05 12:53:56 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-void	print_list(t_list *lst)
-{
-	t_list *tmp;
-	int i;
-
-	tmp = lst;
-	while (tmp)
-	{
-		i = 0;
-		while (((char **)tmp->content)[i])
-		{
-			printf("%s\n", ((char **)tmp->content)[i]);
-			i++;
-		}
-		printf("\n");
-		tmp = tmp->next;
-	}
-}
 
 char	*get_line(int fd)
 {
@@ -63,7 +44,7 @@ char	**get_tetri(int fd)
 
 int		parser(int fd)
 {
-	char 	**tetri;
+	char	**tetri;
 	t_list	*list;
 	t_list	*node;
 
