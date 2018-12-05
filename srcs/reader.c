@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 12:22:13 by oumaysou          #+#    #+#             */
-/*   Updated: 2018/12/05 14:43:49 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/05 15:19:15 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int		check_buffer(char *buffer)
 {
 	int		i;
 	int		count;
-	int		offset;
 
 	i = 0;
 	count = 0;
@@ -78,7 +77,6 @@ char	**get_tetris(char *buffer)
 {
 	int		i;
 	int		start;
-	char	*tmp;
 	char	**tetri;
 
 	i = 0;

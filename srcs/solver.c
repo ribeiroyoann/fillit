@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 14:29:02 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/05 12:25:14 by oumaysou         ###   ########.fr       */
+/*   Updated: 2018/12/05 15:20:06 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ char	**solver(t_list *list)
 	int		letter;
 
 	boardsize = board_initsize(list);
-	if (!(board = init_board(list, boardsize)))
+	if (!(board = init_board(boardsize)))
 		return (NULL);
 	letter = 'A';
 	while (!(solve(list, board, boardsize, letter)))
 	{
 		free_board(board);
 		boardsize++;
-		if (!(board = init_board(list, boardsize)))
+		if (!(board = init_board(boardsize)))
 			return (NULL);
 	}
 	return (board);

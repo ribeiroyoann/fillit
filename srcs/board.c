@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 12:38:23 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/05 12:49:01 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/05 15:19:42 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		board_initsize(t_list *list)
 	return (boardsize);
 }
 
-char	**init_board(t_list *list, int boardsize)
+char	**init_board(int boardsize)
 {
 	char	**board;
 	int		i;

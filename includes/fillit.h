@@ -6,14 +6,14 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:09:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/05 15:12:39 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/05 15:19:48 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 typedef struct	s_point
 {
@@ -32,7 +32,7 @@ void			free_board(char **board);
 void			print_board(char **board);
 
 int				board_initsize(t_list *list);
-char			**init_board(t_list *list, int boardsize);
+char			**init_board(int boardsize);
 
 int				place_piece(char **tetri, char **board, t_point point,
 				int boardsize);
