@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reader.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oumaysou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 15:46:34 by anonymous         #+#    #+#             */
-/*   Updated: 2018/12/04 19:33:09 by yoribeir         ###   ########.fr       */
+/*   Created: 2018/12/05 12:22:13 by oumaysou          #+#    #+#             */
+/*   Updated: 2018/12/05 12:37:37 by oumaysou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ char	**get_tetris(char *buffer)
 	return (tetri);
 }
 
-t_list		*reader(int fd)
+t_list	*reader(int fd)
 {
 	int		readsz;
 	char	buffer[TETRI_SIZE + 1];

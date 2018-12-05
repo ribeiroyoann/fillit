@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 12:13:07 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/04 19:31:41 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/05 12:39:49 by oumaysou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		main(int argc, char **argv)
 {
-	int 	fd;
+	int		fd;
 	t_list	*tetri;
 	char	**board;
 
@@ -24,6 +24,13 @@ int		main(int argc, char **argv)
 		return (0);
 	}
 	fd = open(argv[1], O_RDONLY);
+	if (fd == -1 || !ft_check_end(fd))
+	{
+		ft_putendl_fd("error", 1);
+		return (0);
+	}
+	close(fd);
+	fd = open(argv[1], O_RDONLY);
 	tetri = reader(fd);
 	if (!tetri)
 		return (0);
@@ -32,5 +39,5 @@ int		main(int argc, char **argv)
 	print_board(board);
 	free_list(tetri);
 	free_board(board);
-	return 0;
+	return (0);
 }

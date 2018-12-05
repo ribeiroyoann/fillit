@@ -6,53 +6,35 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 12:36:49 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/04 18:01:40 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/05 12:33:15 by oumaysou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	print_list(t_list *lst)
-{
-	t_list *tmp;
-	int i;
-
-	tmp = lst;
-	while (tmp)
-	{
-		i = 0;
-		while (((char **)tmp->content)[i])
-		{
-			printf("%s\n", ((char **)tmp->content)[i]);
-			i++;
-		}
-		printf("\n");
-		tmp = tmp->next;
-	}
-}
-
 void	print_board(char **board)
 {
-	int i = 0;
+	int i;
 
+	i = 0;
 	while (board[i])
 	{
-		printf("%s\n", board[i]);
+		ft_putendl(board[i]);
 		i++;
 	}
-	printf("\n");
 }
 
 void	print_tetri(char **tetri)
 {
-	int i = 0;
+	int i;
 
+	i = 0;
 	while (tetri[i])
 	{
-		printf(CYN"%s\n"RESET, tetri[i]);
+		ft_putendl(tetri[i]);
 		i++;
 	}
-	printf("\n");
+	ft_putchar('\n');
 }
 
 void	free_board(char **board)

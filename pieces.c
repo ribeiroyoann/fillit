@@ -3,41 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pieces.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oumaysou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 17:49:49 by anonymous         #+#    #+#             */
-/*   Updated: 2018/12/04 15:18:56 by yoribeir         ###   ########.fr       */
+/*   Created: 2018/12/05 11:48:03 by oumaysou          #+#    #+#             */
+/*   Updated: 2018/12/05 12:30:56 by oumaysou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		place_piece(char **tetri, char **board, int y, int x, int boardsize)
-{
-	int 	i;
-	int		j;
-
-	i = 0;
-	while (i < 4)
-	{
-		j = 0;
-		while (j < 4)
-		{
-			if (tetri[i][j] == '#')
-			{
-				if ((y + i) >= boardsize || (j + x >= boardsize))
-					return (0);
-				if (board[y + i][j + x] != '.')
-					return (0);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-int		valid_piece(char **tetri, char **board, int y, int x, int c)
+int		place_piece(char **tetri, char **board, t_point point, int boardsize)
 {
 	int		i;
 	int		j;
@@ -49,7 +24,32 @@ int		valid_piece(char **tetri, char **board, int y, int x, int c)
 		while (j < 4)
 		{
 			if (tetri[i][j] == '#')
-				board[i + y][j + x] = c;
+			{
+				if ((point.y + i) >= boardsize || (j + point.x >= boardsize))
+					return (0);
+				if (board[point.y + i][j + point.x] != '.')
+					return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int		valid_piece(char **tetri, char **board, t_point point, int c)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i < 4)
+	{
+		j = 0;
+		while (j < 4)
+		{
+			if (tetri[i][j] == '#')
+				board[i + point.y][j + point.x] = c;
 			j++;
 		}
 		i++;
@@ -94,16 +94,4 @@ void	align_tetrimino(char **t)
 			t[2][0] == '.' &&
 			t[3][0] == '.')
 		align_x(t);
-}
-
-void	align_list(t_list *list)
-{
-	t_list *tmp;
-
-	tmp = list;
-	while (tmp)
-	{
-		align_tetrimino(tmp->content);
-		tmp = tmp->next;
-	}
 }
