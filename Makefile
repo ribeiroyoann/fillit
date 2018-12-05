@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+         #
+#    By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/19 12:25:14 by yoribeir          #+#    #+#              #
-#    Updated: 2018/11/21 18:53:53 by yoribeir         ###   ########.fr        #
+#    Updated: 2018/12/05 12:39:24 by oumaysou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,26 +16,25 @@ INCLUDES = includes
 LIBS = libft
 LIB = ft
 FLAGS = -Wall -Werror -Wextra
-SRCS = main.c parser.c check.c
+SRCS = main.c reader.c solver.c board.c utils.c pieces.c ft_check_end.c
 SRCSREP = srcs
 OBJS = $(SRCS:.c=.o)
 
-
 .SILENT:
 
-all : $(NAME)
+all: $(NAME)
 
-%.o : $(SRCSREP)/%.c
+%.o: $(SRCSREP)/%.c
 	$(CC) $(FLAGS) -I$(INCLUDES) -c $^
 
-$(NAME) : $(OBJS)
+$(NAME): $(OBJS)
 	@make -C libft
-	$(CC) $(FLAGS) -I$(INCLUDES) $^ -L$(LIBS) -l$(LIB) -o $@
+	$(CC) -g $(FLAGS) -I$(INCLUDES) $^ -L$(LIBS) -l$(LIB) -o $@
 
-clean :
+clean:
 	rm -f $(OBJS)
 	make clean -C libft
-fclean : clean
+fclean: clean
 	make fclean -C libft
 	rm -f $(NAME)
-re : fclean all
+re: fclean all
