@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 12:13:07 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/05 15:33:52 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/05 16:13:04 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,17 @@ void	fillit(char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1 || !ft_check_end(fd))
 	{
-		ft_putendl_fd("error", 1);
+		ft_putendl("error");
 		return ;
 	}
 	close(fd);
 	fd = open(argv[1], O_RDONLY);
 	tetri = reader(fd);
+	if (ft_lstsize(tetri) > 26)
+	{
+		ft_putendl("error");
+		return ;
+	}
 	if (!tetri)
 		return ;
 	board = solver(tetri);
