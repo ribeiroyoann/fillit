@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 12:22:13 by oumaysou          #+#    #+#             */
-/*   Updated: 2018/12/11 14:46:35 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/11 17:42:29 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ t_list	*reader(int fd)
 			ft_lstpushback(&list, ft_lstnew(tetri, 32));
 			free(tetri);
 		}
-		else if (!check_buffer(buffer) || !check_links(buffer) ||
+		if (!check_buffer(buffer) || !check_links(buffer) ||
 			ft_lstsize(list) > 26)
 		{
 			ft_putendl("error");
