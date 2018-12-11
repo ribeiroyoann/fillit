@@ -6,13 +6,11 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 12:22:13 by oumaysou          #+#    #+#             */
-/*   Updated: 2018/12/05 15:19:15 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/11 14:46:35 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-#define TETRI_SIZE 21
 
 int		check_links(char *buffer)
 {
@@ -110,9 +108,10 @@ t_list	*reader(int fd)
 			ft_lstpushback(&list, ft_lstnew(tetri, 32));
 			free(tetri);
 		}
-		else
+		else if (!check_buffer(buffer) || !check_links(buffer) ||
+			ft_lstsize(list) > 26)
 		{
-			ft_putendl_fd("error", 1);
+			ft_putendl("error");
 			return (free_list(list));
 		}
 	}
