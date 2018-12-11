@@ -6,7 +6,7 @@
 #    By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/10 11:13:42 by yoribeir          #+#    #+#              #
-#    Updated: 2018/11/19 12:45:25 by yoribeir         ###   ########.fr        #
+#    Updated: 2018/12/11 15:01:06 by yoribeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,21 +83,16 @@ FILES =	ft_memset.c \
 
 OBJ	= $(FILES:%.c=%.o)
 
-.SILENT:
-
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $?
-	@echo "\033[1;34mLibft\t\033[1;33mCompilation\t\033[0;32m[OK]\033[0m"
 
 clean:
 	rm -f $(OBJ)
-	@echo "\033[1;34mLibft\t\033[1;33mCleaning Objects\t\033[0;32m[OK]\033[0m"
 
 fclean: clean
 	rm -f $(NAME)
-	@echo "\033[1;34mLibft\t\033[1;33mLib Cleaning Lib\t\033[0;32m[OK]\033[0m"
 
 re: fclean all
 
