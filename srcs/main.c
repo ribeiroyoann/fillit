@@ -6,11 +6,12 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 12:13:07 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/11 14:44:52 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/01/10 13:02:33 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
 void	fillit(char **argv)
 {
@@ -18,13 +19,11 @@ void	fillit(char **argv)
 	t_list	*tetri;
 	char	**board;
 
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1 || !ft_check_end(fd))
+	if (!ft_check_end(argv))
 	{
 		ft_putendl("error");
 		return ;
 	}
-	close(fd);
 	fd = open(argv[1], O_RDONLY);
 	tetri = reader(fd);
 	if (!tetri)

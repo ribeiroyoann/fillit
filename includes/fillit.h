@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:09:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/11 14:46:55 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/01/10 12:49:54 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct	s_point
 
 t_list			*reader(int fd);
 char			**solver(t_list *list);
-int				ft_check_end(int fd);
+int				ft_check_end(char **argv);
 t_list			*free_list(t_list *list);
 void			free_board(char **board);
 void			print_board(char **board);

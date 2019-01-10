@@ -6,11 +6,12 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 12:22:13 by oumaysou          #+#    #+#             */
-/*   Updated: 2018/12/11 17:42:29 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/01/10 12:32:23 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
 int		check_links(char *buffer)
 {
